@@ -1,16 +1,7 @@
 import { columnToArray, isValidRow } from './helpers.ts'
 
-export function getValidReports(reports: number[][]): number {
-  let validReports = 0
-
-  for (const report of reports) {
-    if (isValidRow(report).every((bool) => bool)) {
-      validReports++
-    }
-  }
-
-  return validReports
-}
+export const getValidReports = (rows: number[][]): number =>
+  rows.filter(isValidRow).length
 
 console.log(
   'Day 2 Part 1: ',

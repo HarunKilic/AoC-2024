@@ -16,7 +16,7 @@ export function compareToLastElement(
   previous: number,
   incOrDec: IncOrDec,
 ): boolean {
-  if (Math.abs(current - previous) === 0 || Math.abs(current - previous) > 3)
+  if (Math.abs(current - previous) === 0 || Math.abs(current - previous) <= 3)
     return false
 
   if (incOrDec === 'inc' && current < previous) {
@@ -27,20 +27,10 @@ export function compareToLastElement(
   return true
 }
 
-export function isValidRow(row: number[]): boolean[] {
-  let incDec: IncOrDec = null
-  const result = row.map((curr, i, arr) => {
-    // Continue if first element
-    if (i === 0) return true
-
-    // Set increase or decrease
-    if (i === 1) {
-      if (incDec !== null) throw new Error('incDec should be null')
-      curr > arr[i - 1] ? (incDec = 'inc') : (incDec = 'dec')
-    }
-
-    // Check if increase or decrease is consistent
-    return compareToLastElement(curr, arr[i - 1], incDec)
-  })
-  return result
+export function isValidRow(row: number[]): boolean {
+  return (
+    row.every((_, i) => i === 0 || Math.abs(row[i] - row[i - 1]) <= 3) &&
+    (row.every((_, i) => i === 0 || row[i] > row[i - 1]) ||
+      row.every((_, i) => i === 0 || row[i] < row[i - 1]))
+  )
 }

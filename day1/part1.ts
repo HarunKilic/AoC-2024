@@ -1,15 +1,8 @@
-import { getLeftAndRightList } from './helpers.ts'
+import { getDayFile } from '../helpers.ts'
+import { getLeftAndRightList, day1_part1 } from './helpers.ts'
 
+const dayFile = await getDayFile('day1/input.txt')
 const { sortedLeftArray, sortedRightArray, totalLength } =
-  await getLeftAndRightList()
+  getLeftAndRightList(dayFile)
 
-let sum = 0
-
-for (let i = 0; i < totalLength; i++) {
-  const left = sortedLeftArray[i]
-  const right = sortedRightArray[i]
-  const result = Math.abs(left - right)
-  sum += result
-}
-
-console.log('Result:', sum)
+day1_part1(totalLength, sortedLeftArray, sortedRightArray)

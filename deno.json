@@ -11,6 +11,8 @@
     "day3-part2": "deno run --allow-read ./day3/part2.ts",
     "day4-part1": "deno run --allow-read ./day4/part1.ts",
     "day4-part2": "deno run --allow-read ./day4/part2.ts",
+    "day6-part1": "deno run --allow-read ./day6/part1.ts",
+    "day6-part2": "deno run --allow-read ./day6/part2.ts",
     "dev": "deno run --watch main.ts"
   }
 }
